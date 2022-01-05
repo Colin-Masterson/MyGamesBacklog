@@ -1,5 +1,11 @@
+/* Font Import */
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600&display=swap');
 
+:root {
+    --primary-color: #564fcc;
+}
+
+/* Base Styles */
 * {
     box-sizing: border-box;
     padding: 0;
@@ -10,6 +16,7 @@ body {
     font-family: 'Titillium Web', sans-serif;
     color: #000;
     line-height: 1.6;
+    background: url('./images/gaming-pattern.png');
 }
 
 ul {
@@ -34,4 +41,89 @@ p {
 
 img {
     width: 100%;
+}
+
+/* Landing.js */
+/* Header */
+
+.navbar .flex {
+    justify-content: space-between;
+}
+
+.navbar h1 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.navbar .login {
+    font-size: 1.2rem;
+    padding: 0 5px;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.navbar .login:hover {
+    transform: scale(0.98);
+}
+
+/* Landing-info */
+.landing-info {
+    margin-top: 70px;
+    padding: 20px;
+}
+.landing-info .flex {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.landing-info h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.landing-info p {
+    font-size: 1.4rem;
+}
+.landing-info input[type='button'] {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Utility Classes */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 0 40px;
+}
+
+.btn {
+    display: inline-block;
+    width: 150px;
+    padding: 15px;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 47px;
+}
+
+.btn:hover {
+    transform: scale(0.98);
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
