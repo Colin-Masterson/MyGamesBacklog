@@ -85,6 +85,7 @@ img {
     font-size: 1.4rem;
 }
 .landing-info input[type='button'] {
+    margin-top: 15px;
     font-size: 1rem;
     font-weight: 700;
 }
@@ -139,4 +140,19 @@ img {
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+/* Media Queries */
+@media (max-width: 650px) {
+    .landing-info .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .svg-image {
+        grid-row: 1/2;
+    }
+
+    .navbar .login {
+        margin-left: 10px;
+    }
 }

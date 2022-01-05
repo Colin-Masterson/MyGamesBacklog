@@ -30,6 +30,7 @@ function Landing() {
                         </Link>
                     </div>
                     <svg
+                        className='svg-image'
                         viewBox='0 0 736 667'
                         fill='none'
                         xmlns='http://www.w3.org/2000/svg'
