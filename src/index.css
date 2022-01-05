@@ -55,13 +55,13 @@ img {
     color: var(--primary-color);
 }
 
-.navbar .login {
+.login {
     font-size: 1.2rem;
     padding: 0 5px;
     border-bottom: 2px solid var(--primary-color);
 }
 
-.navbar .login:hover {
+.login:hover {
     transform: scale(0.98);
 }
 
@@ -98,9 +98,52 @@ img {
 }
 
 .signup .container {
-    height: 500px;
+    height: 450px;
     border: 2px solid var(--primary-color);
     background-color: white;
+}
+
+.signup .align {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.signup h2 {
+    text-align: center;
+}
+
+.signup .container span {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.signup .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;
+}
+
+.signup .form-input input {
+    width: 90%;
+    height: 50px;
+    border: 1px solid #aba5a5;
+    border-radius: 10px;
+    padding-left: 20px;
+    font-size: 1.1rem;
+}
+
+.last {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+
+.signup p {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.signup .login {
+    margin-left: 10px;
+    font-size: 1rem;
 }
 
 /* Utility Classes */
@@ -120,6 +163,10 @@ img {
     color: #fff;
     border: none;
     border-radius: 47px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    font-weight: 700;
 }
 
 .btn:hover {
@@ -154,5 +201,18 @@ img {
 
     .navbar .login {
         font-size: 1rem;
+    }
+
+    .navbar h1 {
+        font-size: 1.7rem;
+    }
+
+    .signup .container {
+        height: auto;
+    }
+
+    .signup .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
