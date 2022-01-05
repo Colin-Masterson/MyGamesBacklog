@@ -89,6 +89,19 @@ img {
     font-weight: 700;
 }
 
+/* SignUp */
+.signup {
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.signup .container {
+    height: 500px;
+    border: 2px solid var(--primary-color);
+    background-color: white;
+}
+
 /* Utility Classes */
 .container {
     max-width: 1200px;
