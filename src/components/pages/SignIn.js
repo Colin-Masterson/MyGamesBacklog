@@ -30,8 +30,8 @@ function SignIn() {
                             placeholder='Password'
                         />
                     </div>
+                    <input type='button' className='btn' value='Login' />
                 </form>
-                <input type='button' className='btn' value='Login' />
             </div>
         </section>
     );

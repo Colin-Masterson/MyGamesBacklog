@@ -157,6 +157,11 @@ img {
     font-size: 1.1rem;
 }
 
+.signin .btn,
+.signup .btn {
+    justify-self: center;
+}
+
 .last {
     grid-column: 1/2;
     grid-row: 3/4;

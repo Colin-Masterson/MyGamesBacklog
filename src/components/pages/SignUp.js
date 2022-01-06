@@ -54,8 +54,12 @@ function SignUp() {
                             Login
                         </Link>
                     </p>
+                    <input
+                        type='button'
+                        className='btn'
+                        value='Create Account'
+                    />
                 </form>
-                <input type='button' className='btn' value='Create Account' />
             </div>
         </section>
     );
