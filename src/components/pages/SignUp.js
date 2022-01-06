@@ -6,6 +6,36 @@ function SignUp() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [validpassword, setValidPassword] = useState('');
+
+    const signUpHandler = () => {
+        if (!username) {
+            console.log('Username Required!');
+            return;
+        }
+        if (!email) {
+            alert('Email Required!');
+            return;
+        }
+        if (!password) {
+            alert('Password Required!');
+            return;
+        }
+
+        if (validpassword !== password) {
+            alert('You used two different passwords!');
+            return;
+        }
+
+        signup(username, email, password);
+
+        setUsername('');
+        setEmail('');
+        setPassword('');
+        setValidPassword('');
+
+        alert('Signup successfull!');
+    };
 
     return (
         <section className='signup flex'>
@@ -63,6 +93,10 @@ function SignUp() {
                             id='confpassword'
                             name='confpassword'
                             placeholder='Re-type Password'
+                            value={validpassword}
+                            onChange={(e) => {
+                                setValidPassword(e.target.value);
+                            }}
                         />
                     </div>
                     <p>
@@ -75,6 +109,7 @@ function SignUp() {
                         type='button'
                         className='btn'
                         value='Create Account'
+                        onClick={signUpHandler}
                     />
                 </form>
             </div>

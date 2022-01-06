@@ -5,7 +5,7 @@ import {
     signInWithEmailAndPassword,
     signOut,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, addDoc, collection } from 'firebase/firestore';
 
 // Config
 const firebaseConfig = {
@@ -29,7 +29,7 @@ const signup = async (name, email, password) => {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
 
-        await db.collection('users').add({
+        await addDoc(collection(db, 'users'), {
             uid: user.uid,
             name,
             authProvider: 'local',
