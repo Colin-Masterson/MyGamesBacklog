@@ -91,10 +91,11 @@ img {
 }
 
 /* SignUp */
+.signin,
 .signup {
     min-height: 100vh;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .signup .container {
@@ -103,25 +104,50 @@ img {
     background-color: white;
 }
 
+.signin .container {
+    height: 450px;
+    width: 728px;
+    border: 2px solid var(--primary-color);
+    background-color: white;
+}
+
+.first {
+    margin-top: 30px;
+}
+
+.second {
+    margin-bottom: 30px;
+}
+
+.signin .align,
 .signup .align {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+.signin h2,
 .signup h2 {
     text-align: center;
 }
 
+.signin .container span,
 .signup .container span {
     color: var(--primary-color);
     font-weight: 700;
 }
+
 .signup .grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 0;
 }
 
+.signin .grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.signin .form-input input,
 .signup .form-input input {
     width: 90%;
     height: 50px;
@@ -136,11 +162,13 @@ img {
     grid-row: 3/4;
 }
 
+.signin p,
 .signup p {
     text-align: center;
     margin-top: 30px;
 }
 
+.signin .login,
 .signup .login {
     margin-left: 10px;
     font-size: 1rem;

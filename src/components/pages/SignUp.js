@@ -6,7 +6,10 @@ function SignUp() {
         <section className='signup flex'>
             <div className='container align'>
                 <h2>
-                    Sign up to <span>MyGamesBacklog</span>
+                    Sign up to{' '}
+                    <Link to='/'>
+                        <span>MyGamesBacklog</span>
+                    </Link>
                 </h2>
                 <form className='grid'>
                     <div className='form-input'>
@@ -47,7 +50,7 @@ function SignUp() {
                     </div>
                     <p>
                         Already have an account?{' '}
-                        <Link to='/login' className='login'>
+                        <Link to='/signin' className='login'>
                             Login
                         </Link>
                     </p>
