@@ -1,7 +1,12 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { auth, signup } from '../../firebase';
 
 function SignUp() {
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <section className='signup flex'>
             <div className='container align'>
@@ -19,6 +24,10 @@ function SignUp() {
                             id='username'
                             name='username'
                             placeholder='Username'
+                            onChange={(e) => {
+                                setUsername(e.target.value);
+                            }}
+                            value={username}
                         />
                     </div>
                     <div className='form-input'>
@@ -28,6 +37,10 @@ function SignUp() {
                             id='email'
                             name='email'
                             placeholder='email@example.com'
+                            value={email}
+                            onChange={(e) => {
+                                setEmail(e.target.value);
+                            }}
                         />
                     </div>
                     <div className='form-input'>
@@ -37,6 +50,10 @@ function SignUp() {
                             id='password'
                             name='password'
                             placeholder='Password'
+                            onChange={(e) => {
+                                setPassword(e.target.value);
+                            }}
+                            value={password}
                         />
                     </div>
                     <div className='form-input last'>

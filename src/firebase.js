@@ -5,7 +5,7 @@ import {
     signInWithEmailAndPassword,
     signOut,
 } from 'firebase/auth';
-import { getFirestore } from 'firebase//firestore';
+import { getFirestore } from 'firebase/firestore';
 
 // Config
 const firebaseConfig = {
@@ -35,7 +35,7 @@ const signup = async (name, email, password) => {
             authProvider: 'local',
             email,
         });
-    } catch {
+    } catch (err) {
         console.error(err);
         alert(err.message);
     }
@@ -44,14 +44,14 @@ const signup = async (name, email, password) => {
 const signin = async (email, password) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
-    } catch {
+    } catch (err) {
         console.error(err);
         alert(err.message);
     }
 };
 
-const signOut = () => {
+const signout = () => {
     signOut(auth);
 };
 
-export { auth, db };
+export { auth, db, signin, signup, signout };
