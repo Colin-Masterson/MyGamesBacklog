@@ -1,8 +1,21 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { signout, auth } from '../../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function Header() {
+    const [user, loading] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (loading) {
+            return;
+        }
+
+        if (!user) navigate('/');
+    }, [user, loading, navigate]);
+
     return (
         <header className='header'>
             <div className='container flex'>
@@ -15,7 +28,7 @@ function Header() {
                             </Link>
                         </li>
                         <li>
-                            <Link className='navlink' to='/addgames'>
+                            <Link className='navlink' to='/addgame'>
                                 Add Game
                             </Link>
                         </li>
@@ -26,7 +39,15 @@ function Header() {
                         </li>
                     </ul>
                 </nav>
-                <Icon className='icon' icon='gg:log-off' />
+                <Icon
+                    className='icon signout'
+                    icon='gg:log-off'
+                    onClick={() => signout()}
+                />
+                <Icon
+                    className='icon hidden'
+                    icon='icon-park-outline:hamburger-button'
+                />
             </div>
         </header>
     );

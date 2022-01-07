@@ -43,6 +43,10 @@ img {
     width: 100%;
 }
 
+.hidden {
+    display: none;
+}
+
 /* Landing.js */
 /* Header */
 
@@ -290,7 +294,12 @@ img {
         grid-row: auto;
     }
 
+    .header .signout,
     .header nav {
         display: none;
+    }
+
+    .hidden {
+        display: block;
     }
 }
