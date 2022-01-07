@@ -21,7 +21,7 @@ function SignUp() {
 
     const signUpHandler = () => {
         if (!username) {
-            console.log('Username Required!');
+            alert('Username Required!');
             return;
         }
         if (!email) {

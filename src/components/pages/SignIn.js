@@ -22,7 +22,7 @@ function SignIn() {
             alert('Email Required');
             return;
         }
-        if (!email) {
+        if (!password) {
             alert('Email Required');
             return;
         }
