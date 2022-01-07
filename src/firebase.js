@@ -43,7 +43,7 @@ const signup = async (name, email, password) => {
 
 const signin = async (email, password) => {
     try {
-        signInWithEmailAndPassword(auth, email, password);
+        await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
         console.error(err);
         alert(err.message);

@@ -219,6 +219,10 @@ img {
     margin: 10px;
 }
 
+.mobile-nav {
+    display: none;
+}
+
 /* Utility Classes */
 .container {
     max-width: 1200px;
@@ -301,5 +305,28 @@ img {
 
     .hidden {
         display: block;
+    }
+
+    .mobile-nav {
+        display: block;
+        background-color: var(--primary-color);
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .mobile-nav ul {
+        flex-direction: column;
+    }
+
+    .mobile-nav li {
+        padding: 10px;
+    }
+    .mobile-nav .navlink {
+        color: white;
+    }
+
+    .mobile-nav p {
+        margin: 0;
+        cursor: pointer;
     }
 }
