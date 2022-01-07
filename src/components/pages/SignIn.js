@@ -1,10 +1,18 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { signin } from '../../firebase';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { signin, auth } from '../../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function SignIn() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    const [user, loading, error] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (user) navigate('/profile');
+    }, [user]);
 
     const signInHandler = () => {
         if (!email) {
