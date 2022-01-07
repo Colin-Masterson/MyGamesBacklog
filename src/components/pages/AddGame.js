@@ -1,7 +1,12 @@
 import React from 'react';
+import Header from '../misc/Header';
 
 function AddGame() {
-    return <div>AddGame</div>;
+    return (
+        <>
+            <Header />
+        </>
+    );
 }
 
 export default AddGame;
