@@ -4,12 +4,15 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase';
 
 function Landing() {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (loading) {
+            return;
+        }
         if (user) navigate('/profile');
-    }, [user]);
+    }, [user, loading, navigate]);
 
     return (
         <>
