@@ -41,6 +41,7 @@ function Landing() {
                             />
                         </Link>
                     </div>
+
                     <svg
                         className='svg-image'
                         viewBox='0 0 736 667'

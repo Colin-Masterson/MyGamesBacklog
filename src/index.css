@@ -225,7 +225,7 @@ img {
 
 /* Utility Classes */
 .container {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     overflow: auto;
     padding: 0 40px;
@@ -267,6 +267,11 @@ img {
 }
 
 /* Media Queries */
+@media (max-width: 1536px) {
+    .container {
+        max-width: 1200px;
+    }
+}
 @media (max-width: 650px) {
     .landing-info .grid {
         grid-template-columns: 1fr;
