@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { signout, auth } from '../../firebase';
@@ -6,7 +6,12 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 function Header() {
     const [user, loading] = useAuthState(auth);
+    const [toggle, setToggle] = useState(false);
     const navigate = useNavigate();
+
+    const menuHandler = () => {
+        setToggle(!toggle);
+    };
 
     useEffect(() => {
         if (loading) {
@@ -48,10 +53,14 @@ function Header() {
                     <Icon
                         className='icon hidden'
                         icon='icon-park-outline:hamburger-button'
+                        onClick={menuHandler}
                     />
                 </div>
             </header>
-            <div className='mobile-nav'>
+            <div
+                className='mobile-nav'
+                style={{ display: `${toggle} ? 'block' : 'none'` }}
+            >
                 <nav>
                     <ul className='flex'>
                         <li>
@@ -77,6 +86,12 @@ function Header() {
                     </ul>
                 </nav>
             </div>
+
+            <style jsx='true'>{`
+                .mobile-nav {
+                    display: ${toggle ? 'block' : 'none'};
+                }
+            `}</style>
         </>
     );
 }

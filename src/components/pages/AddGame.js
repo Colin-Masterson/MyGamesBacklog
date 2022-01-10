@@ -5,6 +5,7 @@ function AddGame() {
     return (
         <>
             <Header />
+            <h3>Add Game</h3>
         </>
     );
 }

@@ -4,6 +4,7 @@ function Profile() {
     return (
         <>
             <Header />
+            <h3>Profile</h3>
         </>
     );
 }

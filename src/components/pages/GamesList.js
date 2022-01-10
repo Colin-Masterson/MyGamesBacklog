@@ -5,6 +5,7 @@ function GamesList() {
     return (
         <>
             <Header />
+            <h3>Game List</h3>
         </>
     );
 }
