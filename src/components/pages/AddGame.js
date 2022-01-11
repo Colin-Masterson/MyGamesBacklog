@@ -17,11 +17,23 @@ function AddGame() {
                     <form className='grid'>
                         <div className='form-input'>
                             <label htmlFor='game'>Game Name:</label>
-                            <input type='text' id='game' name='game' />
+                            <input
+                                type='text'
+                                id='game'
+                                name='game'
+                                value={gameName}
+                                onChange={(e) => setGameName(e.target.value)}
+                            />
                         </div>
                         <div className='form-input'>
                             <label htmlFor='system'>System:</label>
-                            <input type='text' id='system' name='system' />
+                            <input
+                                type='text'
+                                id='system'
+                                name='system'
+                                value={gameSystem}
+                                onChange={(e) => setGameSystem(e.target.value)}
+                            />
                         </div>
 
                         <div className='radio-grid'>
@@ -31,6 +43,10 @@ function AddGame() {
                                     type='radio'
                                     value='Backlog'
                                     name='status'
+                                    checked={gameStatus === 'Backlog'}
+                                    onChange={(e) =>
+                                        setGameStatus(e.target.value)
+                                    }
                                 />{' '}
                                 <label htmlFor='1'>Backlog</label>
                             </div>
@@ -40,6 +56,10 @@ function AddGame() {
                                     type='radio'
                                     value='In Progress'
                                     name='status'
+                                    checked={gameStatus === 'In Progress'}
+                                    onChange={(e) =>
+                                        setGameStatus(e.target.value)
+                                    }
                                 />{' '}
                                 <label htmlFor='2'>In Progress</label>
                             </div>
@@ -49,6 +69,10 @@ function AddGame() {
                                     type='radio'
                                     value='Finished'
                                     name='status'
+                                    checked={gameStatus === 'Finished'}
+                                    onChange={(e) =>
+                                        setGameStatus(e.target.value)
+                                    }
                                 />{' '}
                                 <label htmlFor='3'>Finished</label>
                             </div>
@@ -58,6 +82,10 @@ function AddGame() {
                                     type='radio'
                                     value='Completed'
                                     name='status'
+                                    checked={gameStatus === 'Completed'}
+                                    onChange={(e) =>
+                                        setGameStatus(e.target.value)
+                                    }
                                 />{' '}
                                 <label htmlFor='4'>Completed</label>
                             </div>
