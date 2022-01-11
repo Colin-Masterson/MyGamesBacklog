@@ -96,6 +96,11 @@ img {
 }
 
 /* SignUp */
+.addgame {
+    min-height: calc(100vh - 58.391px);
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
 .signin,
 .signup {
     min-height: 100vh;
@@ -103,6 +108,13 @@ img {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.addgame .container {
+    height: 600px;
+    overflow: hidden;
+    width: 900px;
+    border: 2px solid var(--primary-color);
+    background-color: white;
+}
 .signup .container {
     height: 450px;
     border: 2px solid var(--primary-color);
@@ -124,17 +136,25 @@ img {
     margin-bottom: 30px;
 }
 
+.addgame .align,
 .signin .align,
 .signup .align {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
+.addgame h2,
 .signin h2,
 .signup h2 {
     text-align: center;
 }
 
+.addgame h2 {
+    margin-top: 20px;
+}
+
+.addgame .container span,
 .signin .container span,
 .signup .container span {
     color: var(--primary-color);
@@ -147,11 +167,17 @@ img {
     gap: 0;
 }
 
+.addgame .grid {
+    width: 60%;
+    grid-template-columns: 1fr;
+}
+
 .signin .grid {
     grid-template-columns: 1fr;
     gap: 0;
 }
 
+.addgame .form-input input,
 .signin .form-input input,
 .signup .form-input input {
     width: 90%;
@@ -162,6 +188,11 @@ img {
     font-size: 1.1rem;
 }
 
+.addgame .form-input input {
+    width: 100%;
+}
+
+.addgame .btn,
 .signin .btn,
 .signup .btn {
     justify-self: center;
@@ -223,6 +254,25 @@ img {
     display: none;
 }
 
+.radio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    justify-items: center;
+}
+
+.radio-grid input {
+    cursor: pointer;
+}
+
+.radio-grid label {
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
 /* Utility Classes */
 .container {
     max-width: 1600px;
@@ -260,7 +310,7 @@ img {
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
+    gap: 10px;
     justify-content: center;
     align-items: center;
     height: 100%;
