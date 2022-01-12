@@ -7,10 +7,10 @@ import {
 } from 'firebase/auth';
 import {
     getFirestore,
-    addDoc,
-    collection,
     doc,
     setDoc,
+    updateDoc,
+    arrayUnion,
 } from 'firebase/firestore';
 
 // Config
@@ -40,6 +40,7 @@ const signup = async (name, email, password) => {
             name,
             authProvider: 'local',
             email,
+            games: [],
         });
     } catch (err) {
         console.error(err);
@@ -60,4 +61,18 @@ const signout = () => {
     signOut(auth);
 };
 
-export { auth, db, signin, signup, signout };
+const addgame = async (name, system, status, user) => {
+    try {
+        await updateDoc(doc(db, 'users', user.uid), {
+            games: arrayUnion({
+                name,
+                system,
+                status,
+            }),
+        });
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+export { auth, db, signin, signup, signout, addgame };
