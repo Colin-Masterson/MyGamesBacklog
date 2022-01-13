@@ -11,6 +11,7 @@ import {
     setDoc,
     updateDoc,
     arrayUnion,
+    getDoc,
 } from 'firebase/firestore';
 
 // Config
@@ -75,4 +76,13 @@ const addgame = async (name, system, status, user) => {
     }
 };
 
-export { auth, db, signin, signup, signout, addgame };
+const getGames = async (user) => {
+    const docRef = doc(db, 'users', user.uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        return docSnap.data();
+    }
+};
+
+export { auth, db, signin, signup, signout, addgame, getGames };
