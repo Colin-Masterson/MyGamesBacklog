@@ -10,6 +10,31 @@ function AddGame() {
 
     const [user] = useAuthState(auth);
 
+    const submitHandler = () => {
+        if (!gameName) {
+            alert('Name Required');
+            return;
+        }
+        if (!gameSystem) {
+            alert('System Required');
+            return;
+        }
+        if (!gameStatus) {
+            alert('Status Required');
+            return;
+        }
+
+        addgame(gameName, gameSystem, gameStatus, user);
+
+        alert('Game Added!!');
+
+        setGameName('');
+        setGameSystem('');
+        setGameStatus('');
+
+        return;
+    };
+
     return (
         <>
             <Header />
@@ -99,9 +124,7 @@ function AddGame() {
                             type='button'
                             className='btn'
                             value='Add Game'
-                            onClick={() =>
-                                addgame(gameName, gameSystem, gameStatus, user)
-                            }
+                            onClick={submitHandler}
                         />
                     </form>
                 </div>
