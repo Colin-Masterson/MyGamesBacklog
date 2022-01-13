@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import Header from '../misc/Header';
+import { addgame, auth } from '../../firebase';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 function AddGame() {
     const [gameName, setGameName] = useState('');
     const [gameSystem, setGameSystem] = useState('');
     const [gameStatus, setGameStatus] = useState('');
+
+    const [user] = useAuthState(auth);
 
     return (
         <>
@@ -91,7 +95,14 @@ function AddGame() {
                             </div>
                         </div>
 
-                        <input type='button' className='btn' value='Add Game' />
+                        <input
+                            type='button'
+                            className='btn'
+                            value='Add Game'
+                            onClick={() =>
+                                addgame(gameName, gameSystem, gameStatus, user)
+                            }
+                        />
                     </form>
                 </div>
             </section>
