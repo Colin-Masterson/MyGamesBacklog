@@ -12,8 +12,11 @@ import {
     updateDoc,
     arrayUnion,
     getDoc,
+    deleteDoc,
+    deleteField,
 } from 'firebase/firestore';
 
+import { v4 as uuid } from 'uuid';
 // Config
 const firebaseConfig = {
     apiKey: 'AIzaSyDMgzn47UXRiTH9cFqWfaVmc2rcYNNlhTU',
@@ -66,6 +69,7 @@ const addgame = async (name, system, status, user) => {
     try {
         await updateDoc(doc(db, 'users', user.uid), {
             games: arrayUnion({
+                id: uuid(),
                 name,
                 system,
                 status,
@@ -85,4 +89,10 @@ const getGames = async (user) => {
     }
 };
 
-export { auth, db, signin, signup, signout, addgame, getGames };
+const deleteGame = async (user) => {
+    const docref = doc(db, 'users', user.uid);
+
+    await deleteDoc(docref);
+};
+
+export { auth, db, signin, signup, signout, addgame, getGames, deleteGame };
