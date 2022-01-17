@@ -12,8 +12,6 @@ import {
     updateDoc,
     arrayUnion,
     getDoc,
-    deleteDoc,
-    deleteField,
 } from 'firebase/firestore';
 
 import { v4 as uuid } from 'uuid';
@@ -89,10 +87,4 @@ const getGames = async (user) => {
     }
 };
 
-const deleteGame = async (user) => {
-    const docref = doc(db, 'users', user.uid);
-
-    await deleteDoc(docref);
-};
-
-export { auth, db, signin, signup, signout, addgame, getGames, deleteGame };
+export { auth, db, signin, signup, signout, addgame, getGames };

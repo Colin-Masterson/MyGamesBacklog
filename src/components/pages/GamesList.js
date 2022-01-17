@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import GameCard from '../misc/GameCard';
 import Header from '../misc/Header';
-import { getGames, auth, deleteGame } from '../../firebase';
+import { getGames, auth } from '../../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 function GamesList() {
