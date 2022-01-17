@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import GameCard from '../misc/GameCard';
 import Header from '../misc/Header';
-import { getGames, auth } from '../../firebase';
+import { getGames, auth, deleteGame } from '../../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 function GamesList() {
@@ -12,13 +13,23 @@ function GamesList() {
             return;
         }
 
-        getGames(user).then((data) => setGames(data.games));
+        const getGameData = async () => {
+            const data = await getGames(user);
+
+            if (data.games) {
+                setGames(data.games);
+            }
+        };
+
+        getGameData();
     }, [user, loading]);
+
     return (
         <>
             <Header />
+
             {games.map((game) => (
-                <li>{game.name}</li>
+                <GameCard key={game.id} game={game} />
             ))}
         </>
     );

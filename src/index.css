@@ -273,6 +273,38 @@ img {
     cursor: pointer;
 }
 
+/* Gamecard */
+.game-card {
+    margin: 25px;
+    padding: 15px;
+}
+
+.game-card .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 2fr;
+
+    border-bottom: 5px solid var(--primary-color);
+}
+
+.game-card .game-name {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.game-card .game-system {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.game-card .game-status {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
 /* Utility Classes */
 .container {
     max-width: 1600px;
