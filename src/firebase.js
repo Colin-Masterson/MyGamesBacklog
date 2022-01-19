@@ -12,6 +12,10 @@ import {
     updateDoc,
     arrayUnion,
     getDoc,
+    query,
+    where,
+    collection,
+    getDocs,
 } from 'firebase/firestore';
 
 import { v4 as uuid } from 'uuid';
@@ -79,12 +83,31 @@ const addgame = async (name, system, status, user) => {
 };
 
 const getGames = async (user) => {
-    const docRef = doc(db, 'users', user.uid);
-    const docSnap = await getDoc(docRef);
+    try {
+        const docRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(docRef);
 
-    if (docSnap.exists()) {
-        return docSnap.data();
+        if (docSnap.exists()) {
+            return docSnap.data();
+        }
+    } catch (err) {
+        console.error(err);
     }
 };
 
-export { auth, db, signin, signup, signout, addgame, getGames };
+const getStatus = async (user) => {
+    try {
+        const docref = collection(db, 'users');
+        const q = query(docref, where('uid', '==', user.uid));
+
+        const querySnap = await getDocs(q);
+
+        querySnap.forEach((doc) => {
+            console.log(doc.data());
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export { auth, db, signin, signup, signout, addgame, getGames, getStatus };
