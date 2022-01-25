@@ -8,7 +8,6 @@ import {
 import {
     getFirestore,
     doc,
-    setDoc,
     updateDoc,
     arrayUnion,
     getDoc,
@@ -41,12 +40,13 @@ const signup = async (name, email, password) => {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
 
-        await setDoc(doc(db, 'users', user.uid), {
-            uid: user.uid,
-            name,
-            authProvider: 'local',
-            email,
-            games: [],
+        const body = { authuser_id: user.uid, username: name, email, password };
+        await fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
         });
     } catch (err) {
         console.error(err);
@@ -69,13 +69,18 @@ const signout = () => {
 
 const addgame = async (name, system, status, user) => {
     try {
-        await updateDoc(doc(db, 'users', user.uid), {
-            games: arrayUnion({
-                id: uuid(),
-                name,
-                system,
-                status,
-            }),
+        const body = {
+            authuser_id: user.uid,
+            gamename: name,
+            gamesystem: system,
+            gamestatus: status,
+        };
+        await fetch('http://localhost:5000/games', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
         });
     } catch (err) {
         console.error(err);
@@ -84,12 +89,19 @@ const addgame = async (name, system, status, user) => {
 
 const getGames = async (user) => {
     try {
-        const docRef = doc(db, 'users', user.uid);
-        const docSnap = await getDoc(docRef);
+        const response = await fetch(
+            `http://localhost:5000/games/${user.uid}`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
 
-        if (docSnap.exists()) {
-            return docSnap.data();
-        }
+        const data = await response.json();
+
+        return data;
     } catch (err) {
         console.error(err);
     }

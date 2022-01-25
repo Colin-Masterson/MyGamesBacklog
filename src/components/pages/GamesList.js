@@ -13,15 +13,9 @@ function GamesList() {
             return;
         }
 
-        const getGameData = async () => {
-            const data = await getGames(user);
-
-            if (data.games) {
-                setGames(data.games);
-            }
-        };
-
-        getGameData();
+        getGames(user).then((data) => {
+            setGames(data);
+        });
     }, [user, loading]);
 
     return (
