@@ -18,7 +18,7 @@ function Header() {
             return;
         }
 
-        if (!user) navigate(`/${user.uid}`);
+        if (!user) navigate('/');
     }, [user, loading, navigate]);
 
     return (
@@ -31,7 +31,7 @@ function Header() {
                             <li>
                                 <Link
                                     className='navlink'
-                                    to={`/games/${user.uid}`}
+                                    to={`/games/${user?.uid}`}
                                 >
                                     My Games
                                 </Link>
@@ -39,7 +39,7 @@ function Header() {
                             <li>
                                 <Link
                                     className='navlink'
-                                    to={`/addgame/${user.uid}`}
+                                    to={`/addgame/${user?.uid}`}
                                 >
                                     Add Game
                                 </Link>
@@ -47,7 +47,7 @@ function Header() {
                             <li>
                                 <Link
                                     className='navlink'
-                                    to={`/profile/${user.uid}`}
+                                    to={`/profile/${user?.uid}`}
                                 >
                                     Profile
                                 </Link>
@@ -73,17 +73,26 @@ function Header() {
                 <nav>
                     <ul className='flex'>
                         <li>
-                            <Link className='navlink' to='/games'>
+                            <Link
+                                className='navlink'
+                                to={`/games/${user?.uid}`}
+                            >
                                 My Games
                             </Link>
                         </li>
                         <li>
-                            <Link className='navlink' to='/addgame'>
+                            <Link
+                                className='navlink'
+                                to={`/addgame/${user?.uid}`}
+                            >
                                 Add Game
                             </Link>
                         </li>
                         <li>
-                            <Link className='navlink' to='/profile'>
+                            <Link
+                                className='navlink'
+                                to={`/profile/${user?.uid}`}
+                            >
                                 Profile
                             </Link>
                         </li>

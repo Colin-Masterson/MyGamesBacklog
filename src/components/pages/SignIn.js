@@ -38,7 +38,7 @@ function SignIn() {
             <div className='container align'>
                 <h2>
                     Sign in to{' '}
-                    <Link to={`/${user.uid}`}>
+                    <Link to={`/`}>
                         <span>MyGamesBacklog</span>
                     </Link>
                 </h2>
