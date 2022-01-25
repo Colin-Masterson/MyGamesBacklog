@@ -5,19 +5,8 @@ import {
     signInWithEmailAndPassword,
     signOut,
 } from 'firebase/auth';
-import {
-    getFirestore,
-    doc,
-    updateDoc,
-    arrayUnion,
-    getDoc,
-    query,
-    where,
-    collection,
-    getDocs,
-} from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 
-import { v4 as uuid } from 'uuid';
 // Config
 const firebaseConfig = {
     apiKey: 'AIzaSyDMgzn47UXRiTH9cFqWfaVmc2rcYNNlhTU',
@@ -65,6 +54,7 @@ const signin = async (email, password) => {
 
 const signout = () => {
     signOut(auth);
+    return;
 };
 
 const addgame = async (name, system, status, user) => {
@@ -107,19 +97,4 @@ const getGames = async (user) => {
     }
 };
 
-const getStatus = async (user) => {
-    try {
-        const docref = collection(db, 'users');
-        const q = query(docref, where('uid', '==', user.uid));
-
-        const querySnap = await getDocs(q);
-
-        querySnap.forEach((doc) => {
-            console.log(doc.data());
-        });
-    } catch (err) {
-        console.log(err);
-    }
-};
-
-export { auth, db, signin, signup, signout, addgame, getGames, getStatus };
+export { auth, db, signin, signup, signout, addgame, getGames };
