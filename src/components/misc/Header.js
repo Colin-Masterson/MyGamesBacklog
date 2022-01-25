@@ -18,7 +18,7 @@ function Header() {
             return;
         }
 
-        if (!user) navigate('/');
+        if (!user) navigate(`/${user.uid}`);
     }, [user, loading, navigate]);
 
     return (
@@ -29,17 +29,26 @@ function Header() {
                     <nav>
                         <ul className='flex'>
                             <li>
-                                <Link className='navlink' to='/games'>
+                                <Link
+                                    className='navlink'
+                                    to={`/games/${user.uid}`}
+                                >
                                     My Games
                                 </Link>
                             </li>
                             <li>
-                                <Link className='navlink' to='/addgame'>
+                                <Link
+                                    className='navlink'
+                                    to={`/addgame/${user.uid}`}
+                                >
                                     Add Game
                                 </Link>
                             </li>
                             <li>
-                                <Link className='navlink' to='/profile'>
+                                <Link
+                                    className='navlink'
+                                    to={`/profile/${user.uid}`}
+                                >
                                     Profile
                                 </Link>
                             </li>

@@ -14,9 +14,9 @@ function App() {
                 <Route path='/' element={<Landing />} />
                 <Route path='signin' element={<SignIn />} />
                 <Route path='signup' element={<SignUp />} />
-                <Route path='profile' element={<Profile />} />
-                <Route path='games' element={<GamesList />} />
-                <Route path='addgame' element={<AddGame />} />
+                <Route path='profile/:id' element={<Profile />} />
+                <Route path='games/:id' element={<GamesList />} />
+                <Route path='addgame/:id' element={<AddGame />} />
             </Routes>
         </BrowserRouter>
     );

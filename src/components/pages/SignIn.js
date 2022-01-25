@@ -14,7 +14,7 @@ function SignIn() {
         if (loading) {
             return;
         }
-        if (user) navigate('/profile');
+        if (user) navigate(`/profile/${user.uid}`);
     }, [user, loading, navigate]);
 
     const signInHandler = () => {
@@ -38,7 +38,7 @@ function SignIn() {
             <div className='container align'>
                 <h2>
                     Sign in to{' '}
-                    <Link to='/'>
+                    <Link to={`/${user.uid}`}>
                         <span>MyGamesBacklog</span>
                     </Link>
                 </h2>

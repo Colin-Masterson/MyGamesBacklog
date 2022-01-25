@@ -11,7 +11,7 @@ function Landing() {
         if (loading) {
             return;
         }
-        if (user) navigate('/profile');
+        if (user) navigate(`/profile/${user.uid}`);
     }, [user, loading, navigate]);
 
     return (
