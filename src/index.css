@@ -287,6 +287,8 @@ img {
 }
 
 .game-card .game-name {
+    grid-column: 1/3;
+    grid-row: 1/2;
     font-size: 2rem;
     font-weight: 400;
 }
@@ -305,6 +307,81 @@ img {
     font-size: 1.5rem;
 }
 
+.game-card .icon {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    width: 50px;
+    justify-self: flex-end;
+    font-size: 1.5rem;
+}
+
+.game-card .icon:hover {
+    cursor: pointer;
+}
+
+/* Profile */
+
+.profile {
+    margin-top: 60px;
+    padding: 10px;
+}
+
+.profile .container .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.profile .stats {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid var(--primary-color);
+    padding: 40px 70px 70px 70px;
+    background-color: white;
+}
+
+.profile .stats h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    align-self: center;
+    margin: 0;
+}
+
+.profile .stat {
+    display: flex;
+    justify-content: space-between;
+    margin: 70px 20px 0 20px;
+    border-bottom: 2px solid var(--primary-color);
+    padding: 0 15px;
+}
+
+.profile .stat h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.profile .stat h5 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.profile .main {
+    align-self: stretch;
+    grid-template-columns: 1/2;
+    grid-row: 1/3;
+}
+
+.profile .systems,
+.profile .games {
+    align-self: stretch;
+    justify-self: stretch;
+    padding: 40px 15px 15px 15px;
+}
+
+.list {
+    height: 250px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
 /* Utility Classes */
 .container {
     max-width: 1600px;
@@ -437,5 +514,9 @@ img {
     .mobile-nav p {
         margin: 0;
         cursor: pointer;
+    }
+
+    .profile .grid {
+        grid-template-columns: 1fr;
     }
 }
