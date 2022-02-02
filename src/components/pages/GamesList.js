@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-
-import Header from '../misc/Header';
-import { getGames, auth } from '../../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { getGames, auth } from '../../firebase';
+import Header from '../misc/Header';
+import { Icon } from '@iconify/react';
 
 function GamesList() {
     const [user, loading] = useAuthState(auth);
@@ -34,18 +34,23 @@ function GamesList() {
         <>
             <Header />
 
-            {games.map((game) => (
-                <div key={game.game_id} className='game-card'>
-                    <div className='grid container'>
-                        <h5 className='game-name'>{game.gamename}</h5>
-                        <p className='game-system'>{game.gamesystem}</p>
-                        <p className='game-status'>{game.gamestatus}</p>
-                        <button onClick={() => deleteGame(game.game_id)}>
-                            Delete
-                        </button>
+            {games.map((game) => {
+                return (
+                    <div key={game.game_id} className='game-card'>
+                        <div className='grid container'>
+                            <h5 className='game-name'>{game.gamename}</h5>
+                            <p className='game-system'>{game.gamesystem}</p>
+                            <p className='game-status'>{game.gamestatus}</p>
+
+                            <Icon
+                                className='icon'
+                                icon='ant-design:delete-filled'
+                                onClick={() => deleteGame(game.game_id)}
+                            />
+                        </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </>
     );
 }
