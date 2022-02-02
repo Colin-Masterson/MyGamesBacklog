@@ -97,4 +97,24 @@ const getGames = async (user) => {
     }
 };
 
-export { auth, db, signin, signup, signout, addgame, getGames };
+const getData = async (user) => {
+    try {
+        const response = await fetch(
+            `http://localhost:5000/games/${user.uid}/data`,
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+
+        const data = await response.json();
+
+        return data;
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+export { auth, db, signin, signup, signout, addgame, getGames, getData };
