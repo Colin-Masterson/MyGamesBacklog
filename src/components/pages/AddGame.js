@@ -56,13 +56,36 @@ function AddGame() {
                         </div>
                         <div className='form-input'>
                             <label htmlFor='system'>System:</label>
-                            <input
+                            {/* <input
                                 type='text'
                                 id='system'
                                 name='system'
                                 value={gameSystem}
                                 onChange={(e) => setGameSystem(e.target.value)}
-                            />
+                            /> */}
+                            <select
+                                value={gameSystem}
+                                onChange={(e) => setGameSystem(e.target.value)}
+                            >
+                                <option value='Select System'>
+                                    Select System
+                                </option>
+                                <option value='N64'>Nintendo 64</option>
+                                <option value='Gamecube'>Gamecube</option>
+                                <option value='Wii'>Nintendo Wii</option>
+                                <option value='Wii U'>Nintendo Wii U</option>
+                                <option value='Switch'>Nintendo Switch</option>
+                                <option value='PS1'>Playstation</option>
+                                <option value='PS2'>Playstation 2</option>
+                                <option value='PS3'>Playstation 3</option>
+                                <option value='PS4'>Playstation 4</option>
+                                <option value='PS5'>Playstation 5</option>
+                                <option value='Xbox'>Xbox</option>
+                                <option value='Xbox 360'>Xbox 360</option>
+                                <option value='Xbox One'>Xbox One</option>
+                                <option value='Xbox S-S'>Xbox Series S</option>
+                                <option value='Xbox S-X'>Xbox Series X</option>
+                            </select>
                         </div>
 
                         <div className='radio-grid'>
