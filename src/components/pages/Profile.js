@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { getData, auth } from '../../firebase';
 import Header from '../misc/Header';
+import Loader from '../misc/Loader';
 
 function Profile() {
     const [user, loading] = useAuthState(auth);
     const [userdata, setUserData] = useState([]);
     useEffect(() => {
         if (loading) {
-            return <h1>Loading...</h1>;
+            return <Loader />;
         }
 
         getData(user).then((data) => {
@@ -78,7 +79,7 @@ function Profile() {
             </>
         );
     } else {
-        return <h1>Loading....</h1>;
+        return <Loader />;
     }
 }
 

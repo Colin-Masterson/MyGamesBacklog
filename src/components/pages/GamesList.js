@@ -3,6 +3,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { getGames, auth } from '../../firebase';
 import Header from '../misc/Header';
 import { Icon } from '@iconify/react';
+import Loader from '../misc/Loader';
+
+import host from '../../host';
 
 function GamesList() {
     const [user, loading] = useAuthState(auth);
@@ -10,7 +13,7 @@ function GamesList() {
 
     const deleteGame = async (id) => {
         try {
-            await fetch(`http://localhost:5000/games/${id}`, {
+            await fetch(`${host}/games/${id}`, {
                 method: 'DELETE',
             });
 
@@ -22,7 +25,7 @@ function GamesList() {
 
     useEffect(() => {
         if (loading) {
-            return;
+            return <Loader />;
         }
 
         getGames(user).then((data) => {
@@ -30,29 +33,33 @@ function GamesList() {
         });
     }, [user, loading]);
 
-    return (
-        <>
-            <Header />
+    if (games) {
+        return (
+            <>
+                <Header />
 
-            {games.map((game) => {
-                return (
-                    <div key={game.game_id} className='game-card'>
-                        <div className='grid container'>
-                            <h5 className='game-name'>{game.gamename}</h5>
-                            <p className='game-system'>{game.gamesystem}</p>
-                            <p className='game-status'>{game.gamestatus}</p>
+                {games.map((game) => {
+                    return (
+                        <div key={game.game_id} className='game-card'>
+                            <div className='grid container'>
+                                <h5 className='game-name'>{game.gamename}</h5>
+                                <p className='game-system'>{game.gamesystem}</p>
+                                <p className='game-status'>{game.gamestatus}</p>
 
-                            <Icon
-                                className='icon'
-                                icon='ant-design:delete-filled'
-                                onClick={() => deleteGame(game.game_id)}
-                            />
+                                <Icon
+                                    className='icon'
+                                    icon='ant-design:delete-filled'
+                                    onClick={() => deleteGame(game.game_id)}
+                                />
+                            </div>
                         </div>
-                    </div>
-                );
-            })}
-        </>
-    );
+                    );
+                })}
+            </>
+        );
+    } else {
+        return <Loader />;
+    }
 }
 
 export default GamesList;
