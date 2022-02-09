@@ -6,6 +6,7 @@ import {
     signOut,
 } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
+import host from './host';
 
 // Config
 const firebaseConfig = {
@@ -30,7 +31,7 @@ const signup = async (name, email, password) => {
         const user = res.user;
 
         const body = { authuser_id: user.uid, username: name, email, password };
-        await fetch('http://localhost:5000/users', {
+        await fetch(`${host}/users`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,7 +66,7 @@ const addgame = async (name, system, status, user) => {
             gamesystem: system,
             gamestatus: status,
         };
-        await fetch('http://localhost:5000/games', {
+        await fetch(`${host}/games`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,15 +80,12 @@ const addgame = async (name, system, status, user) => {
 
 const getGames = async (user) => {
     try {
-        const response = await fetch(
-            `http://localhost:5000/games/${user.uid}`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-        );
+        const response = await fetch(`${host}/games/${user.uid}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
         const data = await response.json();
 
@@ -99,15 +97,12 @@ const getGames = async (user) => {
 
 const getData = async (user) => {
     try {
-        const response = await fetch(
-            `http://localhost:5000/games/${user.uid}/data`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-        );
+        const response = await fetch(`${host}/games/${user.uid}/data`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
         const data = await response.json();
 
