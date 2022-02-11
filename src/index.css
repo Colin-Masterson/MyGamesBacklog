@@ -430,8 +430,7 @@ select:focus {
     justify-content: center;
     align-items: center;
 }
-.loader {
-}
+
 /* Utility Classes */
 .container {
     max-width: 1600px;
