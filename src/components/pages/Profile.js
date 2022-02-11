@@ -17,8 +17,15 @@ function Profile() {
         });
     }, [user, loading]);
 
-    const { totalgames, inprogress, backlog, finished, completed, playing } =
-        userdata;
+    const {
+        totalgames,
+        inprogress,
+        backlog,
+        finished,
+        completed,
+        playing,
+        username,
+    } = userdata;
 
     if (playing) {
         return (
@@ -27,7 +34,7 @@ function Profile() {
                 <section className='profile'>
                     <div className='container grid'>
                         <div className='stats main'>
-                            <h2>Colin's Stats</h2>
+                            <h2>{username}'s Stats</h2>
 
                             <div>
                                 <div className='stat'>
