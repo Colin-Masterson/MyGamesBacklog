@@ -373,7 +373,7 @@ select:focus {
     display: flex;
     flex-direction: column;
     border: 5px solid var(--primary-color);
-    padding: 40px 70px 70px 70px;
+    padding: 40px;
     background-color: white;
 }
 
@@ -400,6 +400,8 @@ select:focus {
 .profile .stat h5 {
     font-size: 1.5rem;
     font-weight: 700;
+    align-self: center;
+    margin-left: 15px;
 }
 
 .profile .main {
@@ -566,5 +568,13 @@ select:focus {
 
     .profile .grid {
         grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 20px;
+    }
+    .radio-grid {
+        grid-template-columns: 1fr;
+        justify-items: flex-start;
     }
 }
