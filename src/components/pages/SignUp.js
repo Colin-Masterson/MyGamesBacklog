@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, signup } from '../../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { warnMsg, successMsg } from '../misc/Toast';
+import { ToastContainer } from 'react-toastify';
 
 function SignUp() {
     const [username, setUsername] = useState('');
@@ -21,20 +23,20 @@ function SignUp() {
 
     const signUpHandler = () => {
         if (!username) {
-            alert('Username Required!');
+            warnMsg('Username Required!');
             return;
         }
         if (!email) {
-            alert('Email Required!');
+            warnMsg('Email Required!');
             return;
         }
         if (!password) {
-            alert('Password Required!');
+            warnMsg('Password Required!');
             return;
         }
 
         if (validpassword !== password) {
-            alert('You used two different passwords!');
+            warnMsg('Passwords do not match!');
             return;
         }
 
@@ -44,12 +46,11 @@ function SignUp() {
         setEmail('');
         setPassword('');
         setValidPassword('');
-
-        alert('Signup successfull!');
     };
 
     return (
         <section className='signup flex'>
+            <ToastContainer />
             <div className='container align'>
                 <h2>
                     Sign up to{' '}
