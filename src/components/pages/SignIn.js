@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { signin, auth } from '../../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { ToastContainer } from 'react-toastify';
+import { warnMsg } from '../misc/Toast';
 
 function SignIn() {
     const [email, setEmail] = useState('');
@@ -19,11 +21,11 @@ function SignIn() {
 
     const signInHandler = () => {
         if (!email) {
-            alert('Email Required');
+            warnMsg('Email Required!');
             return;
         }
         if (!password) {
-            alert('Email Required');
+            warnMsg('Password Required!');
             return;
         }
 
@@ -36,6 +38,7 @@ function SignIn() {
     return (
         <section className='signin flex'>
             <div className='container align'>
+                <ToastContainer />
                 <h2>
                     Sign in to{' '}
                     <Link to={`/`}>
